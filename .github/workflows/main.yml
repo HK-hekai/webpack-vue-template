@@ -1,0 +1,39 @@
+name: NodeJS with Webpack
+
+on:
+  push:
+    branches: ['master']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x, 21.x]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # - name: Install
+      #   run: yarn install # 安装依赖
+
+      # - name: Build
+      #   run: yarn build
+
+      - name: Upload to Deploy Server
+        uses: JamesIves/github-pages-deploy-action@releases/v2
+        # with:
+        #   personal_token: ${{ secrets.VUE3_WEBPACK_TEMPLATE_DEPLOY }} # 使用刚新建的secret
+        #   publish_dir: dist # 存放build后产物的目录
+        env:
+          ACCESS_TOKEN: ${{ secrets.VUE3_WEBPACK_TEMPLATE_DEPLOY }} ## GitHub 密钥 ACCESS_TOKEN 是在第二步Settings的Secrets中新增时定义的Name,要保持一致
+          BASE_BRANCH: master # The branch the action should deploy from.
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: dist # The folder the action should deploy.
+          BUILD_SCRIPT: yarn install && yarn build
