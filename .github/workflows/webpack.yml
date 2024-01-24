@@ -27,7 +27,7 @@ jobs:
         run: yarn build
 
       - name: Upload to Deploy Server
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: master
-          folder: ./dist
+          personal_token: ${{ secrets.VUE3_WEBPACK_TEMPLATE_DEPLOY }} # 使用刚新建的secret
+          publish_dir: dist # 存放build后产物的目录
