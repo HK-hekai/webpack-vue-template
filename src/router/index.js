@@ -5,6 +5,7 @@ const routes = [...baseRouters];
 
 const router = createRouter({
 	history: createWebHistory(),
+	base: '/webpack-vue-template/',
 	routes,
 	scrollBehavior(to, from, savedPosition) {
 		if (savedPosition) {

@@ -41,7 +41,7 @@ module.exports = {
 				}),
 			],
 			// 解决 import { ref , reactive ..... } from 'vue' 大量引入的问题
-			imports: ['vue', 'vue-router'],
+			imports: ['vue', 'vue-router', 'pinia'],
 		}),
 		Components({
 			resolvers: [
