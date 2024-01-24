@@ -5,7 +5,6 @@ const userInfo = ref(null);
 
 const getUserInfo = async () => {
 	const data = await User.getUserInfo();
-	console.log(data);
 	userInfo.value = data.data;
 };
 
