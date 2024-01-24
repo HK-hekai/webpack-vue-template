@@ -3,6 +3,8 @@ import baseRouters from './modules/base';
 
 const routes = [...baseRouters];
 
+console.log('测试自动部署');
+
 const router = createRouter({
 	history: createWebHistory(),
 	base: '/webpack-vue-template/',
