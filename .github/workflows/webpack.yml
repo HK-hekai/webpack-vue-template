@@ -2,7 +2,7 @@ name: NodeJS with Webpack
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ['master']
 
 jobs:
   build:
@@ -13,22 +13,21 @@ jobs:
         node-version: [14.x, 16.x, 18.x, 21.x]
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Install
-      run: yarn install # 安装依赖
+      - name: Install
+        run: yarn install # 安装依赖
 
-    - name: Build
-      run: yarn build
+      - name: Build
+        run: yarn build
 
-    - name: Upload to Deploy Server
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.DEPLOY_SECRET }}
-        BRANCH: gh-pages
-        publish_dir: ./dist
+      - name: Upload to Deploy Server
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: master
+          folder: ./dist
