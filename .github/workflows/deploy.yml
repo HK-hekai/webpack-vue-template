@@ -28,4 +28,4 @@ jobs:
           # 希望部署的分支，默认gh-pages
           branch: gh-pages
           github_token: ${{ secrets.VUE3_WEBPACK_TEMPLATE_DEPLOY }} # secret 名
-          #commit_message: Update Webpack5.x + Vue3.x Starter # 部署时的 git 提交信息，自由填写
+          commit_message: Update Webpack5.x + Vue3.x Starter # 部署时的 git 提交信息，自由填写

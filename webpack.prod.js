@@ -12,6 +12,7 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist'),
 		filename: '[name].[contenthash].bundle.js',
 		clean: true,
+		publicPath: '/webpack-vue-template/',
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
